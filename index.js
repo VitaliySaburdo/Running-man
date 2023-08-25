@@ -44,10 +44,15 @@ class MainWorld{
         const color = 0xFFFFFF;
         const intercity = 0.6;
         const light = new THREE.AmbientLight(color, intercity);
-
         light.position.x = 1200;
         light.position.y = 3;
 
-        this.scene.add(light)
+        this.scene.add(light);
+
+        this.scene.background = new THREE.Color(0x000000);
+        this.scene.fog = new THREE.Color(0x000000, 0.00125);
+
+        this.gameOver = false;
+
     }
 }
