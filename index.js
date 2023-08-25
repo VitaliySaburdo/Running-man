@@ -1,6 +1,6 @@
 import * as THREE from "https://unpkg.com/three/build/three.module.js";
 
-// import { ground } from "./ground";
+import { ground } from "./ground";
 
 class MainWorld {
   constructor() {
@@ -57,7 +57,7 @@ class MainWorld {
     this.scene.background = new THREE.Color(0x000000);
     this.scene.fog = new THREE.Color(0x000000, 0.00125);
 
-    // this.ground = ground.Ground({ scene: this.scene });
+    this.ground = new ground.Ground({ scene: this.scene });
 
     this.gameOver = false;
     this.previousRAF = null;
@@ -85,14 +85,14 @@ class MainWorld {
   }
 
   Step(timeElapsed) {
-      if (this.gameStarted || this.gameOver) {
-          return
-      }
-
-      if (this.player.gameOver && !this.gameOver) {
-          this.gameOver = true;
-          document.getElementById('game-over').classList.toggle('active')
-      }
+    if (this.gameStarted || this.gameOver) {
+      return;
+    }
+    this.ground.Update(timeElapsed);
+    if (this.player.gameOver && !this.gameOver) {
+      this.gameOver = true;
+      document.getElementById("game-over").classList.toggle("active");
+    }
   }
 }
 

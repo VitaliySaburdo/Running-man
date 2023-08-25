@@ -4,7 +4,8 @@ export const ground = (() => {
   class Ground {
     constructor(params) {
         this.params = params;
-        this.load();
+      this.load();
+      console.log('yes');
     }
 
     load = () => {
