@@ -63,4 +63,19 @@ class MainWorld{
         this.camera.updateProjectionMatrix();
         this.threejs.setResize(window.innerWidth, window.innerHeight);
     }
+
+    RAF() {
+        requestAnimationFrame((t) => {
+            if (this.previousRAF === null) {
+                this.previousRAF = t
+            }
+        });
+        this.RAF();
+        this.step((t - this.previousRAF) / 1000);
+        this.previousRAF = t
+    };
 }
+
+let APP = null;
+
+window.addEventListener()
