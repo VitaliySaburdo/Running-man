@@ -27,7 +27,7 @@ class MainWorld{
         document.getElementById('container').appendChild(this.threejs.domElement);
 
         window.addEventListener('resize', () => {
-            this.orWindowResize_()
+            this.onWindowResize()
         }, false);
 
         const fov = 60;
@@ -53,6 +53,14 @@ class MainWorld{
         this.scene.fog = new THREE.Color(0x000000, 0.00125);
 
         this.gameOver = false;
+        this.previousRAF = null;
 
+        this.onWindowResize()
+    }
+
+    onWindowResize() {
+        this.camera.aspect = window.innerWidth / window.innerHeight;
+        this.camera.updateProjectionMatrix();
+        this.threejs.setResize(window.innerWidth, window.innerHeight);
     }
 }
