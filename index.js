@@ -26,7 +26,28 @@ class MainWorld{
 
         document.getElementById('container').appendChild(this.threejs.domElement);
 
-        
+        window.addEventListener('resize', () => {
+            this.orWindowResize_()
+        }, false);
 
+        const fov = 60;
+        const aspect = 1920 / 1080;
+        const near = 1;
+        const far = 20000;
+
+        this.camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+        this.camera.position.set(-15, 7, 10);
+        this.camera.lookAt(120, -20, 10);
+
+        this.scene = new THREE.Scene();
+
+        const color = 0xFFFFFF;
+        const intercity = 0.6;
+        const light = new THREE.AmbientLight(color, intercity);
+
+        light.position.x = 1200;
+        light.position.y = 3;
+
+        this.scene.add(light)
     }
 }
