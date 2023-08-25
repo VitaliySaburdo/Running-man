@@ -33,5 +33,5 @@ export const ground = (() => {
       }
       
     };
-    return Ground
+    return { Ground: Ground }
 })();
