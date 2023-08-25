@@ -1,4 +1,4 @@
-import * as THREE from "https://unpkg.com/three/build/three.module.js";
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 export const ground = (() => {
   class Ground {
@@ -8,19 +8,19 @@ export const ground = (() => {
     }
 
     load = () => {
-      const loader = new FBXLoader();
+      const loader = new GLTFLoader();
 
-      loader.load("Brain.glb", (glb) => {
-        glb.cast.shadow = false;
-        glb.receiveShadow = true;
-        glb.position.y = -3;
-        glb.rotation.x = -Math.PI / 1;
-        glb.rotation.y = -Math.PI / 2;
+      loader.load("Brain.glb", (gltf) => {
+        gltf.cast.shadow = false;
+        gltf.receiveShadow = true;
+        gltf.position.y = -3;
+        gltf.rotation.x = -Math.PI / 1;
+        gltf.rotation.y = -Math.PI / 2;
 
-        glb.scale.setScalar(0.09);
+        gltf.scale.setScalar(0.09);
 
-        this.mesh = glb;
-        this.params.scene.add(glb);
+        this.mesh = gltf;
+        this.params.scene.add(gltf);
       });
     };
 
