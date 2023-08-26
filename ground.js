@@ -11,7 +11,7 @@ export const ground = (() => {
     load = () => {
       const loader = new GLTFLoader();
 
-      loader.load("Brain.glb", (gltf) => {
+      loader.load("untitled.fbx", (gltf) => {
         gltf.cast.shadow = false;
         gltf.receiveShadow = true;
         gltf.position.y = -3;
@@ -30,7 +30,8 @@ export const ground = (() => {
               this.mesh.position.x -= 1; 
           } else {
              this.mesh.position.x = 1;  
-          }
+        }
+
       }
       
     };
